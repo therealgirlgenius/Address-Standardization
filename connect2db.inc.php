@@ -19,9 +19,9 @@ function connect2db($dbName)
   $result = mysql_select_db($dbName) // Use database
     or
   die ("<br />$dbName database could not be selected." . mysql_error());
-  // End CREATE connection
+  // End Create connection
 
-} // End FUNCTION connect2db()
+} // End Function connect2db()
 
 connect2db($dbName); // Call the function
 ?>
