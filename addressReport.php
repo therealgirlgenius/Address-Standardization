@@ -16,12 +16,14 @@ require ("htmlHead.inc");
 
 echo "\t<h1>$title</h1>\n";
 
+// SELECT QUERY FROM DATABASE
 $query = "SELECT addressID,street,other,city,state,zip5,zip4,validated
           FROM address
           ORDER BY addressID";
 
 $result = mysql_query($query) or die ("<b>Query Failed.</b><br />" . mysql_error());
 
+// COUNT OF NUMBER OF RECORDS IN DATABASE
 $numRecords = mysql_num_rows($result);
 
 if ($numRecords == '0')
@@ -30,6 +32,7 @@ if ($numRecords == '0')
   echo "\t<p><a href=\"form.php\">Return to Address Entry Form</a></p>\n";
   echo "\t<p><a href=\"menu.php\">Go to Main Menu</a></p>\n";
 }
+// BUILD TABLE AND DISPLAY RECORDS IN DATABASE
 else
 {
 echo "\t<table class=\"collapse\">\n";
