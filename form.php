@@ -1,20 +1,20 @@
 <?php
-/*  Author:			Kimberly Stepp
-    Date:			June 22, 2018
+/*  Author:		Kimberly Stepp
+    Date:		June 22, 2018
     Description:	form.php
 */
 
-$author			= "Kimberly Stepp";
-$date			= "June 22, 2018";
+$author		= "Kimberly Stepp";
+$date		= "June 22, 2018";
 $description	= "PHP Form for Address Entry & Validation";
-$title			= "Address Entry Form";
+$title		= "Address Entry Form";
 $requiredTitle  = "Fields marked with an asterisk (*) are required.";
-$stylesheet		= "styles";
-$thisScript		= htmlspecialchars($_SERVER['PHP_SELF']);
-$startOver		= "form.php";
+$stylesheet	= "styles";
+$thisScript	= htmlspecialchars($_SERVER['PHP_SELF']);
+$startOver	= "form.php";
 $processForm	= "insert.php";
-$submit			= $_POST['submit'];
-$dbName			= "xxxxxx";
+$submit		= $_POST['submit'];
+$dbName		= "xxxxxx";
 
 // DECLARE VARIABLES AND SET TO EMPTY VALUES
 $street = $other = $city = $state = $zip5 = $zip4 = "";
