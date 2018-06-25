@@ -2,20 +2,21 @@
 /*
       Author:       Kimberly Stepp
       Date:         June 22, 2018
-      Description:  Insert address records into address table in test database
+      Description:  Insert address records into address table in a database
 */
 
 $author       = "Kimberly Stepp";
 $date	      = "June 22, 2018";
 $description  = "Insert address records into database";
 $title	      = "Address Record Insert Confirmation";
-$stylesheet	  = "styles";
-$submit		  = $_POST['submit'];
+$stylesheet   = "styles";
+$submit	      = $_POST['submit'];
 $dbName	      = "xxxxxx";
 
 require ("connect2db.inc.php");
 require ("htmlHead.inc");
 
+// PREVENT DIRECT ACCESS TO SCRIPT
 if (!isset($_POST['submit']))
 {
 	echo "This is not a stand-alone script. Please submit data ";
@@ -24,14 +25,18 @@ if (!isset($_POST['submit']))
 
 echo "\t<h1>$title</h1>\n";
 
-$street				= strtoupper(mysql_real_escape_string($_POST['address1']));
-$other				= strtoupper(mysql_real_escape_string($_POST['address2']));
-$city				= strtoupper(mysql_real_escape_string($_POST['city']));
-$state				= strtoupper(mysql_real_escape_string($_POST['state']));
-$zip5				= mysql_real_escape_string($_POST['zipcode5']);
-$zip4				= mysql_real_escape_string($_POST['zipcode4']);
-$validated			= mysql_real_escape_string($_POST['selectedAddress']);
+// INITIALIZE VARIABLES WITH POST DATA
 
+// USER ENTRY
+$street			= strtoupper(mysql_real_escape_string($_POST['address1']));
+$other			= strtoupper(mysql_real_escape_string($_POST['address2']));
+$city			= strtoupper(mysql_real_escape_string($_POST['city']));
+$state			= strtoupper(mysql_real_escape_string($_POST['state']));
+$zip5			= mysql_real_escape_string($_POST['zipcode5']);
+$zip4			= mysql_real_escape_string($_POST['zipcode4']);
+$validated		= mysql_real_escape_string($_POST['selectedAddress']);
+
+// USPS STANDARDIZED ENTRY
 $streetValidated	= mysql_real_escape_string($_POST['address1Validated']);
 $otherValidated		= mysql_real_escape_string($_POST['address2Validated']);;
 $cityValidated		= mysql_real_escape_string($_POST['cityValidated']);
@@ -40,10 +45,11 @@ $zip5Validated		= mysql_real_escape_string($_POST['zipcode5Validated']);
 $zip4Validated		= mysql_real_escape_string($_POST['zipcode4Validated']);
 $validated  		= mysql_real_escape_string($_POST['selectedAddress']);
 
+// INSERT USER ENTRY INTO DATABASE
 if ($validated == '0')
 {
 	$query = "INSERT INTO address
-          (street,other,city,state,zip5,zip4,validated)
+          	  (street,other,city,state,zip5,zip4,validated)
 		  VALUES
 		  ('$street','$other','$city','$state','$zip5','$zip4','$validated')";
 
@@ -55,10 +61,11 @@ if ($validated == '0')
 	echo "\t<p><a href=\"menu.php\">Go to Main Menu</a></p>\n";			
 }
 
+// INSERT STANDARDIZED ENTRY INTO DATABASE
 else
 {
 	$query = "INSERT INTO address
-          (street,other,city,state,zip5,zip4,validated)
+          	  (street,other,city,state,zip5,zip4,validated)
 		  VALUES
 		  ('$streetValidated','$otherValidated','$cityValidated','$stateValidated','$zip5Validated','$zip4Validated','$validated')";
 
